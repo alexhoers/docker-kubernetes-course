@@ -32,8 +32,10 @@ services:
         dockerfile: .docker/node-alexhoers.development.dockerfile
       ports:
       - "3000:3000"
-      volumes:
-        - .:/usr/src/app
+      # Host volumes: these map a path from the host into the container with a bind mount. They have the short syntax /path/on/host:/path/in/container. 
+      # See https://docs.docker.com/storage/volumes/ or https://stackoverflow.com/questions/46166304/docker-compose-volumes-without-colon
+      volumes: 
+        - ./server:/usr/src/app/
       working_dir: /usr/src/app
       networks:
         - alexhoers-network
