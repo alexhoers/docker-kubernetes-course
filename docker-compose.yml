@@ -1,0 +1,45 @@
+    # 1. Update config values (localhost --> mongo and localhost --> redis) in config/config.development.json if necessary.
+    # 2. Set APP_ENV environment variable by running the following command in your commnand window (see the notes below if on Windows). 
+
+    #    export APP_ENV=development or export APP_ENV=production
+    #    export DOCKER_ACCT=codewithdan
+
+    #    NOTE: If you're on Windows use one of the following commands to create the environment variables. 
+    #    Use 'codewithdan' for the account if you want to run in Kubernetes (see the readme). Otherwise, you can substitute your own 
+    #    Docker account for the value if you'd like.
+
+    #    For the standard Windows DOS command shell use `set` instead of `export` for environment variables.
+    #    For Windows Powershell use `$env:APP_ENV = "value"`.
+
+    #    $env:APP_ENV="development" or $env:APP_ENV="production"
+    #    $env:DOCKER_ACCT="codewithdan"
+    
+    # 3. Remove "node" service `volume` (below) only if doing a production build
+    #  - For development, make sure you ran `npm install` first, so that node_modules will be available on the volume for the node app to run
+    # 4. Run docker-compose build
+    # 5. Run docker-compose up
+    # 6. Live long and prosper
+    
+version: "3.7"
+ 
+services:
+
+    node:
+      container_name: node-alexhoers
+      image: alexhoers/node-alexhoers
+      build: 
+        context: .
+        dockerfile: .docker/node-alexhoers.development.dockerfile
+      ports:
+      - "3000:3000"
+      volumes:
+        - .:/usr/src/app
+      working_dir: /usr/src/app
+      networks:
+        - alexhoers-network
+
+ 
+        
+networks:
+    alexhoers-network:
+      driver: bridge

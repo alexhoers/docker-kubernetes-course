@@ -9,4 +9,5 @@ app.use("/api", controllers);
 
 app.listen(port, () => {
   console.log(`App is starting up and listening on port ${port}`);
+  console.log(`Hello World`);
 });
