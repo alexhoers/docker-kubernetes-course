@@ -37,8 +37,6 @@ services:
       working_dir: /usr/src/app
       networks:
         - alexhoers-network
-
- 
         
 networks:
     alexhoers-network:

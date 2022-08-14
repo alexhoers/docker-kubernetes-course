@@ -9,8 +9,6 @@ router.use((req, res, next) => {
 });
 
 router.get("/knapsack", (req, res, next) => {
-  
-
   res.send("Hej med dig");
 });
 
