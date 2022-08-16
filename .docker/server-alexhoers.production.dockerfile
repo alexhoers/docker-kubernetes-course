@@ -7,7 +7,7 @@ LABEL author="Alexander Hørsholt"
 WORKDIR /usr/src/app
 
 # Copy package.json from local root directory (relative to docker-compose.yml)
-COPY ./client/package.json ./client/package-lock.json ./
+COPY ./server/package.json ./server/package-lock.json ./
 
 # Set environment variable for production
 ENV NODE_ENV production

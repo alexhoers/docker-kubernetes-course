@@ -12,7 +12,7 @@
     #    For Windows Powershell use `$env:APP_ENV = "value"`.
 
     #    $env:APP_ENV="development" or $env:APP_ENV="production"
-    #    $env:DOCKER_ACCT="codewithdan"
+    #    $env:DOCKER_ACCT="alexhoers"
     
     # 3. Remove "node" service `volume` (below) only if doing a production build
     #  - For development, make sure you ran `npm install` first, so that node_modules will be available on the volume for the node app to run

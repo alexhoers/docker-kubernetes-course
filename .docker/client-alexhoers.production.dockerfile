@@ -12,7 +12,7 @@ WORKDIR /usr/src/app
 COPY ./client/package.json ./client/package-lock.json ./
 
 # Install npm packages
-RUN npm install
+RUN npm install 
 
 # Copy remaining source code
 COPY ./client . 
