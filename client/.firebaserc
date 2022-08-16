@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "winery-ee26e"
+  },
+  "targets": {
+    "winery-ee26e": {
+      "hosting": {
+        "winery-app": [
+          "winery-ee26e"
+        ]
+      }
+    }
+  }
+}

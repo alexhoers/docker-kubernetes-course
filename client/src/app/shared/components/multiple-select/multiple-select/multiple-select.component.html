@@ -1,0 +1,14 @@
+<div class="multiple-select-container">
+    <mat-form-field appearance="fill">
+    <mat-select [formControl]="items" multiple [(ngModel)]="selection" (closed)="onChange()">
+        <mat-select-trigger>
+            {{items.value ? items.value[0] : ''}}
+            <span *ngIf="items.value?.length > 1" class="example-additional-selection">
+                (+{{items.value.length - 1}} {{items.value?.length === 2 ? 'other' : 'others'}})
+            </span>
+        </mat-select-trigger>
+        <mat-option *ngFor="let item of itemsList" [value]="item.value">{{item.value}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+</div>
+

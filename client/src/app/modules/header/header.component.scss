@@ -1,0 +1,30 @@
+.bg-beige {
+    background-color: #F7F7F7;
+}
+  
+.nav-link {
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link:hover {
+    border-bottom: 2px solid saddlebrown;
+}
+
+.active {
+    border-bottom: 2px solid saddlebrown;
+}
+
+.align-top {
+    vertical-align: top !important;
+}
+
+.navbar-text a {
+    color: rgba(0,0,0,.7);
+}
+
+.navbar-brand { 
+    border-bottom: 2px solid transparent;
+}

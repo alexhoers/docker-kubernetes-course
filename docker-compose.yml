@@ -24,18 +24,33 @@ version: "3.7"
  
 services:
 
-    node:
-      container_name: node-alexhoers
-      image: alexhoers/node-alexhoers
+    server:
+      container_name: server-alexhoers
+      image: alexhoers/server-alexhoers
       build: 
         context: .
-        dockerfile: .docker/node-alexhoers.development.dockerfile
+        dockerfile: .docker/server-alexhoers.production.dockerfile
       ports:
       - "3000:3000"
       # Host volumes: these map a path from the host into the container with a bind mount. They have the short syntax /path/on/host:/path/in/container. 
       # See https://docs.docker.com/storage/volumes/ or https://stackoverflow.com/questions/46166304/docker-compose-volumes-without-colon
       volumes: 
         - ./server:/usr/src/app/
+      working_dir: /usr/src/app
+      networks:
+        - alexhoers-network
+    
+    client:
+      container_name: client-alexhoers
+      image: alexhoers/client-alexhoers
+      build:
+        context: .
+        dockerfile: .docker/client-alexhoers.production.dockerfile
+      # Map nginx port 80 to 4200
+      ports:
+      - "4200:80"
+      volumes:
+        - ./client:/usr/src/app/
       working_dir: /usr/src/app
       networks:
         - alexhoers-network

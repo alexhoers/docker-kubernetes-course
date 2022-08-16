@@ -1,0 +1,13 @@
+
+<div class="bg-beige p-5 rounded">
+  <div class="col">
+    <div class="card">
+      <div class="card-body" *ngIf="(news | async) as News">
+        <ul>
+          <li *ngFor="let new of news | async">
+            {{ new.title }}
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>

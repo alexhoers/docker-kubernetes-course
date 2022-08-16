@@ -1,0 +1,49 @@
+.well {
+    border-bottom: 1px solid #e6e6e6;
+
+}
+.row {
+    
+}
+img {
+    cursor: pointer;
+}
+
+.white {
+    background-color:white;
+}
+    .box {
+        border-bottom: 1px solid #e6e6e6;
+        display: block;
+        max-height: 100px;
+        overflow: hidden;
+        background-color:white;
+        transition: height 0.5s,  transform 0.5s;
+    }
+    
+    .boxclicked {
+        border-bottom: 1px solid #e6e6e6;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.5s,  transform 0.5s;
+    }
+    
+
+.end {
+    transform: rotate(-90deg);
+    transition: 0.5s;
+}
+
+.start {
+    transform: rotate(0deg);
+    transition: 0.5s;
+}
+
+.measuringDiv {
+    border-bottom: 1px solid #e6e6e6;
+    display: block;
+    height: 0;
+    overflow: hidden;
+    background-color:white;
+    transition: height 0.5s,  transform 0.5s;
+  }

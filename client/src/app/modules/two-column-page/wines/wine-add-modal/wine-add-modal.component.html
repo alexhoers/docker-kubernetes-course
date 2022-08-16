@@ -1,0 +1,73 @@
+<div class="modal fade" id="wine-add-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add new port</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form autocomplete="off" [formGroup]="submitForm" (ngSubmit)="submit(submitForm)">
+          <div class="modal-body">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" formControlName="name">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="producer" class="form-label">Producer</label>
+                  <select class="form-control" formControlName="producer">
+                    <option disabled selected value> Select an option </option>
+                    <option value="1">Sandeman</option>
+                    <option value="2">Test</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="type" class="form-label">Type</label>
+                  <select class="form-control" formControlName="type">
+                    <option disabled selected value> Select an option </option>
+                    <option value="1">Vintage</option>
+                    <option value="2">Tawny</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <em *ngIf="validateRating() && this.submitForm.controls.rating.errors?.pattern">Set rating 0 and 100</em>       
+                  <label for="rating" class="form-label">Rating</label>
+                  <input type="text" class="form-control" id="rating" formControlName="rating">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="notes" class="form-label">Notes</label>
+                  <app-multiple-select (selectedItems)="wine.notes" [itemsList]="notes"></app-multiple-select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="description" class="form-label">Description</label>
+                  <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" [disabled]="submitForm.invalid" data-bs-dismiss="modal">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

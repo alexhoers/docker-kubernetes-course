@@ -1,0 +1,36 @@
+<img [routerLink]="['/wines']" src="/assets/images/back.png" width="35" height="30">
+
+<div class="row top-spacer">
+    <div class="col-lg-3">
+        <div class="card">
+            <img src="/assets/images/sandeman.png" class="card-img-top" alt="...">
+        </div>
+    </div>
+    <div class="col-lg-9" *ngIf="wine">
+        <div class="row">
+            <div class="col">
+                <h2 class="red">{{ wine.name }}, {{ wine.producer }}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>{{ wine.type }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h5>{{ wine.year }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col scrollable">
+                {{ wine.description }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        hej
+    </div>
+</div>

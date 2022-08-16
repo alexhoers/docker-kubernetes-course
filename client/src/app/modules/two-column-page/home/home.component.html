@@ -1,0 +1,19 @@
+<div>
+    <h1>Home</h1>
+</div>
+<div *ngIf="loading">
+    <img src="/assets/spinner.gif" height="40" width="40">
+</div>
+
+<div *ngFor="let news of newsList; let i = index">
+    <app-collapsible-well [title]="news.title" [date]="news.date" [idx]="news.id" [open]="i === 0">
+        <div class="d-flex justify-content-between">
+            <div >
+                <p>{{ news.description }}</p>
+            </div>
+        </div>
+    </app-collapsible-well>
+  
+</div>
+
+<!--<img *ngIf="!loading" class="bg-img" src="/assets/images/garden.jpg">-->

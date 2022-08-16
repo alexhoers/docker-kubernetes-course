@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+const logger = require('./lib/logger');
+
 // Routes
 const controllers = require("./controllers/controllers");
 
 app.use("/api", controllers);
 
 app.listen(port, () => {
-  console.log(`App is starting up and listening on port ${port}`);
-  console.log(`Hello World. Server started.`);
+  logger.log(`App is starting up and listening on port ${port}`);
+  logger.log(`Hello World. Server started.`);
 });
