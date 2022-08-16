@@ -14,17 +14,24 @@ import { Wine } from 'src/app/shared/models/wine';
 export class WinesComponent implements OnInit {
 
   wines: Wine[] = [];
+  testWines: Wine[] = [];
+
   loading: boolean = true;
   public $: any;
 
   constructor(
     private wineService: WineService, 
     @Inject(JQUERY_TOKEN) private $factory: any, 
-    private router: Router
+    private router: Router,
+    private dataService: DataService
     ) { 
     wineService.getWines().subscribe( data => {
       this.wines = data;
       this.loading = false; // Set instead of piping: getWines().pipe(finalize(()=>{this.loading=false})).subscribe()
+    })
+    dataService.getWines().subscribe( data => {
+      this.testWines = data;
+      console.log(JSON.stringify(data));
     })
   }
 

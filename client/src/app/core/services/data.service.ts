@@ -1,10 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Wine } from "src/app/shared/models/wine";
+import { Wine, WineAdapter } from "src/app/shared/models/wine";
 import { of } from 'rxjs';
-import { delay } from 'rxjs/internal/operators';
+import { delay, map } from 'rxjs/internal/operators';
 import { Type } from "src/app/shared/models/enums/types";
 import { News } from "src/app/shared/models/news";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
     providedIn: 'root'
@@ -14,13 +15,21 @@ export class DataService {
     wines: Wine[] = [];
     news: News[] = [];
 
-    constructor() {
+    baseUrl = "http://localhost:3000/api";
+    jsonHeaders = new HttpHeaders({ 'Content-Type': 'application/JSON' });
+
+
+    constructor(private http: HttpClient, private wineAdapter: WineAdapter) {
         this.initData();
     }
 
 
     public getWines(): Observable<Wine[]> {
-        return of(this.wines).pipe(delay(1000));
+        console.log("calling URL with: GET " + this.baseUrl + "/wines");
+        return this.http.get(this.baseUrl + "/wines", { headers: this.jsonHeaders }).pipe(  
+            map((wine: Wine[]) => wine.map(item => this.wineAdapter.adapt(item)))
+        );
+        //return of(this.wines).pipe(delay(1000));
     }
 
     public getNews(): Observable<News[]> {

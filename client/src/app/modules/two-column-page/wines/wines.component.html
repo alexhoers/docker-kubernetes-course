@@ -6,6 +6,7 @@
 <div *ngIf="loading">
   <img src="/assets/spinner.gif" height="40" width="40"> 
 </div>
+{{ testWines | json }}
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div *ngFor="let wine of wines">
     <div class="col">
