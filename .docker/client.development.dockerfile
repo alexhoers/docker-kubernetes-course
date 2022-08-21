@@ -24,7 +24,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copy custom nginx config
-COPY ./.docker/config/nginx.production.conf /etc/nginx/nginx.conf
+COPY ./.docker/config/nginx.development.conf /etc/nginx/nginx.conf
 
 # Copy compiled source files to nginx webserver html folder
 COPY --from=build /usr/src/app/dist/winery-app /usr/share/nginx/html
