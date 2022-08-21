@@ -1,4 +1,4 @@
-// Third party libraries
+// Third party library imports
 const express = require("express");
 const cors = require("cors");
 
@@ -17,6 +17,7 @@ const logger = require("./lib/config/logger");
 // res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 app.use(cors());
 
+// Register controllers with app
 app.use("/api", controllers);
 
 app.listen(port, () => {
