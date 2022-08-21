@@ -27,10 +27,10 @@ export class Wine {
 export class WineAdapter implements Adapter<Wine> {
     adapt(item: any): Wine {
         return new Wine({
-            name: item.name,
+            name: item.wine_name, // Mappint from server data
             producer: item.producer,
             year: item.year,
-            description: item.description,
+            description: item.wine_description,
             image: item.image,
             rating: item.rating,
             notes: item.notes
