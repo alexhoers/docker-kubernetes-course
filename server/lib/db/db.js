@@ -1,19 +1,7 @@
 "use strict";
 
-const { Client, Pool } = require("pg");
-
-// module.exports is an object reference that gets returned from the require() calls.
-// It is a reference to a plain JavaScript object.
-// It is empty by default.
-
-// exports is a convenience variable so module authors write less code
-
-/* 
-let wines = exports.wines = [];
-
-wines.push({ id: 1, name: "Wine 1"});
-wines.push({ id: 2, name: "Wine 2"});
-*/
+const { Pool } = require("pg");
+const logger = require("../config/logger");
 
 const pool = new Pool({
   user: "postgres",
@@ -25,9 +13,12 @@ const pool = new Pool({
 
 const getWines = (req, res) => {
   pool.query("SELECT * FROM wines", (err, results) => {
-    console.log(err, results);
-    //pool.end();
-    res.status(200).json(results.rows)
+    if (err) {
+      logger.log(error);
+    }
+    logger.log("SELECT * FROM wines, returned " + results.rows + " rows");
+    logger.log(results.rows);
+    res.status(200).json(results.rows);
   });
 };
 
