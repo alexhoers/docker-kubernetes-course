@@ -13,7 +13,7 @@ router.use((req, res, next) => {
 
 router.get("/wines", (req, res, next) => {
   // Response is appended with json data from getWines response 
-  const wines = db.getWines(req, res);
+  const wines = db.f(req, res);
   logger.log(
     `Logged request to /wines endpoint. Returning ${JSON.stringify(wines)}`
   );
