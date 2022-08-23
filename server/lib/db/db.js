@@ -3,6 +3,10 @@
 const { Pool } = require("pg");
 const logger = require("../config/logger");
 
+/**
+ * A Pool is used we it is expected there will be multiple, concurrent requests. It provides a pool of re-usable open client instances, it reduces latency whenever a client can be reused, and automatically reconnects the client.
+ * A client is one static connection.
+ */
 const pool = new Pool({
   user: "postgres",
   host: "postgres",
@@ -11,6 +15,8 @@ const pool = new Pool({
   port: 5432,
 });
 
+// Called directly without acquiring a client object
+// TODO: add transactional support https://node-postgres.com/features/transactions
 const getWines = (req, res) => {
   pool.query("SELECT * FROM wines", (err, results) => {
     if (err) {

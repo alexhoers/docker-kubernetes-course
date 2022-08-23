@@ -50,7 +50,7 @@ services:
         PGDATA: "/data/postgres"
       volumes:
        - postgres:/data/postgres
-       - ./.docker/postgres_scripts/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+       - ./.docker/postgres_scripts/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql # docker-entrypoint-initdb.d contains initialization scripts https://hub.docker.com/_/postgres/
       ports:
         - "15432:5432"
       restart: unless-stopped
