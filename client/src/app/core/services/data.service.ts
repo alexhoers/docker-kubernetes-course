@@ -4,7 +4,7 @@ import { Wine, WineAdapter } from "src/app/shared/models/wine";
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/internal/operators';
 import { Type } from "src/app/shared/models/enums/types";
-import { News } from "src/app/shared/models/news";
+import { News, NewsAdapter } from "src/app/shared/models/news";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable({
@@ -19,7 +19,7 @@ export class DataService {
     jsonHeaders = new HttpHeaders({ 'Content-Type': 'application/JSON' });
 
 
-    constructor(private http: HttpClient, private wineAdapter: WineAdapter) {
+    constructor(private http: HttpClient, private wineAdapter: WineAdapter, private newsAdapter: NewsAdapter) {
         this.initData();
     }
 
@@ -33,7 +33,11 @@ export class DataService {
     }
 
     public getNews(): Observable<News[]> {
-        return of(this.news).pipe(delay(1000));
+        console.log("calling URL with: GET " + this.baseUrl + "/news");
+        return this.http.get(this.baseUrl + "/news", { headers: this.jsonHeaders }).pipe(  
+            map((news: News[]) => news.map(item => this.newsAdapter.adapt(item)))
+        );
+        //return of(this.news).pipe(delay(1000));
     }
 
     /*public getWine(id: string): Observable<Wine> {

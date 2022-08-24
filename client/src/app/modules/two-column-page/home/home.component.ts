@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private dataService: DataService, private afAuth: Auth, private router: Router) { 
     dataService.getNews().pipe(finalize(()=>{this.loading=false})).subscribe( data => {
       this.newsList = data;
+      console.log(data);
     })
   }
 

@@ -4,7 +4,6 @@
 <div *ngIf="loading">
     <img src="/assets/spinner.gif" height="40" width="40">
 </div>
-
 <div *ngFor="let news of newsList; let i = index">
     <app-collapsible-well [title]="news.title" [date]="news.date" [idx]="news.id" [open]="i === 0">
         <div class="d-flex justify-content-between">

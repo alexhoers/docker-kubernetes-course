@@ -13,9 +13,17 @@ router.use((req, res, next) => {
 
 router.get("/wines", (req, res, next) => {
   // Response is appended with json data from getWines response 
-  const wines = db.f(req, res);
+  const wines = db.getWines(req, res);
   logger.log(
     `Logged request to /wines endpoint. Returning ${JSON.stringify(wines)}`
+  );
+});
+
+router.get("/news", (req, res, next) => {
+  // Response is appended with json data from getNews response 
+  const news = db.getNews(req, res);
+  logger.log(
+    `Logged request to /news endpoint. Returning ${JSON.stringify(news)}`
   );
 });
 
