@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dictionary } from 'src/app/shared/interfaces/dictionary';
 
 
@@ -11,16 +11,18 @@ import { Dictionary } from 'src/app/shared/interfaces/dictionary';
 })
 export class MultipleSelectComponent implements OnInit {
 
+  @Input() form: FormGroup;
   @Input() itemsList: Dictionary[];
   @Output() selectedItems = new EventEmitter();
 
-  items = new FormControl();
+  formControl: FormControl;
 
   selection = [''];
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   onChange() {

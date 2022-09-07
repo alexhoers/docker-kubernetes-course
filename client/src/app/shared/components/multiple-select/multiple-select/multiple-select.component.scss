@@ -33,8 +33,19 @@
     .mat-form-field-underline{
         display:none;
     }
-
+    .mat-form-field-wrapper {
+    /* padding-bottom: 1.34375em; */
+    padding-bottom: 0;
+    }
+ 
 }
+
+
 .cdk-overlay-container {
     z-index: 9999 !important;
 }
+
+.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
+    color:#212529;
+}
+

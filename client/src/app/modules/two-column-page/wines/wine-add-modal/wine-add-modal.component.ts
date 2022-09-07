@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DataService } from 'src/app/core/services';
 import { WineService } from 'src/app/core/services/wine.service';
@@ -10,7 +10,8 @@ import { Wine } from 'src/app/shared/models/wine';
 @Component({
   selector: 'app-wine-add-modal',
   templateUrl: 'wine-add-modal.component.html',
-  styleUrls: ['./wine-add-modal.component.scss']
+  styleUrls: ['./wine-add-modal.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WineAddModalComponent implements OnInit {
 
@@ -32,9 +33,10 @@ export class WineAddModalComponent implements OnInit {
     let producer = new FormControl(this.wine.producer, Validators.required);
     let type = new FormControl(this.wine.type, Validators.required);
     let rating = new FormControl(this.wine.rating, [Validators.required, Validators.pattern(/^[1-9][0-9]?$|^100$/)]);
-    let notes = new FormControl(this.wine.notes, Validators.required);
+    let notes = new FormControl(this.wine.notes,  [Validators.required, Validators.minLength(1)]);
     let description = new FormControl(this.wine.description, [Validators.required, Validators.maxLength(10)]);
 
+    // Notes form group is
     this.submitForm = new FormGroup({
       name: name,
       producer: producer,
@@ -54,6 +56,7 @@ export class WineAddModalComponent implements OnInit {
     if (this.submitForm.valid) {
       this.wine = formValues.value;
       this.wineService.addWine(this.wine);
+      this.wine = new Wine();
     }
   }
 
