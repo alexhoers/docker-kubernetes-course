@@ -4,6 +4,7 @@ import { Database } from 'firebase/database';
 import { DocumentData } from 'rxfire/firestore/interfaces';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SettingsService } from 'src/app/core/services/settings.service';
 import { WineService } from 'src/app/core/services/wine.service';
 import { News } from 'src/app/shared/models/news';
 
@@ -17,12 +18,12 @@ export class NewsComponent implements OnInit {
 
   news: Observable<News[]>;
 
-  constructor() {
+  constructor(private settingsService: SettingsService) {
 
   }
 
   ngOnInit(): void {
-
+    console.log(this.settingsService.getServerEndpoint());
   }
 
 }

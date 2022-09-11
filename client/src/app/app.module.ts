@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +23,9 @@ import { WineService } from './core/services/wine.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MultipleSelectComponent } from './shared/components/multiple-select/multiple-select/multiple-select.component';
+import { SettingsService } from './core/services/settings.service';
+import { initializeAppEnv } from './app-init';
+import { SettingsLoaderService } from './core/services/settings.loader.service';
 
 
 
@@ -60,6 +63,7 @@ import { MultipleSelectComponent } from './shared/components/multiple-select/mul
     DataService,
     WineService, 
     AuthService,
+    { provide: APP_INITIALIZER, useFactory: initializeAppEnv, multi: true, deps: [SettingsService, SettingsLoaderService] },
     JQUERY_SERVICE], // Shared across modules if added in AppModule
   bootstrap: [AppComponent]
 })

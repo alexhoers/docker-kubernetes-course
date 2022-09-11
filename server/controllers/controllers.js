@@ -27,4 +27,8 @@ router.get("/news", (req, res, next) => {
   );
 });
 
+router.get("/hello-world", (req, res) => {
+  res.send("Hello world!");
+});
+
 module.exports = router;
